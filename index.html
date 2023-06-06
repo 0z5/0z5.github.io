@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Average Calculator</title>
+    <script>
+        function calculateAverage() {
+            var quizzes = getValues("quizzes");
+            var midterms = getValues("midterms");
+            var performance = parseFloat(document.getElementById("performance").value);
+
+            var quizzesAvg = perc(sum(quizzes), 30);
+            var midtermsAvg = perc(sum(midterms), 50);
+            var performanceAvg = perc(performance, 20);
+
+            var valueToDisplay = quizzesAvg + midtermsAvg + performanceAvg;
+
+            document.getElementById("result").innerHTML = "The average is: " + valueToDisplay;
+        }
+
+        function sum(arr) {
+            var ret = 0;
+            for (var i = 0; i < arr.length; i++) {
+                if (typeof arr[i] === "number") {
+                    ret += arr[i];
+                }
+            }
+            return ret / arr.length;
+        }
+
+        function perc(number, percentage) {
+            return (number * percentage) / 100;
+        }
+
+        function getValues(inputId) {
+            var inputElement = document.getElementById(inputId);
+            var values = inputElement.value.split(",").map(function (value) {
+                return parseFloat(value.trim());
+            });
+            return values;
+        }
+    </script>
+</head>
+<body>
+    <h1>Average Calculator</h1>
+    
+    <label for="quizzes">Quizzes:</label>
+    <input type="text" id="quizzes" placeholder="Enter values separated by commas" /><br />
+    
+    <label for="midterms">Midterms:</label>
+    <input type="text" id="midterms" placeholder="Enter values separated by commas" /><br />
+    
+    <label for="performance">Performance:</label>
+    <input type="number" id="performance" /><br />
+    
+    <button onclick="calculateAverage()">Calculate Average</button>
+    
+    <div id="result"></div>
+</body>
+</html>
