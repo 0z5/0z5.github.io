@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Grade Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Grade Calculator</h1>
+      <div id="classes">
+        <!-- Class UseOfEnglish -->
+        <div class="class">
+          <h3>Use of English</h3>
+          <div class="form-group">
+            <label for="englishQuiz1">Quiz 1:</label>
+            <input type="number" class="form-control" id="englishQuiz1">
+          </div>
+          <div class="form-group">
+            <label for="englishQuiz2">Quiz 2:</label>
+            <input type="number" class="form-control" id="englishQuiz2">
+          </div>
+          <div class="form-group">
+            <label for="englishMidterm1">Midterm 1:</label>
+            <input type="number" class="form-control" id="englishMidterm1">
+          </div>
+          <div class="form-group">
+            <label for="englishMidterm2">Midterm 2:</label>
+            <input type="number" class="form-control" id="englishMidterm2">
+          </div>
+          <div class="form-group">
+            <label for="englishPerformance">Performance:</label>
+            <input type="number" class="form-control" id="englishPerformance">
+          </div>
+        </div>
+      </div>
+      <!-- Class ListeningAndSpeaking -->
+      <div class="class">
+        <h3>Listening and Speaking</h3>
+        <div class="form-group">
+          <label for="listeningQuiz1">Quiz 1:</label>
+          <input type="number" class="form-control" id="listeningQuiz1">
+        </div>
+        <div class="form-group">
+          <label for="listeningQuiz2">Quiz 2:</label>
+          <input type="number" class="form-control" id="listeningQuiz2">
+        </div>
+        <div class="form-group">
+          <label for="listeningMidterm1">Midterm 1:</label>
+          <input type="number" class="form-control" id="listeningMidterm1">
+        </div>
+        <div class="form-group">
+          <label for="listeningMidterm2">Midterm 2:</label>
+          <input type="number" class="form-control" id="listeningMidterm2">
+        </div>
+        <div class="form-group">
+          <label for="listeningPerformance">Performance:</label>
+          <input type="number" class="form-control" id="listeningPerformance">
+        </div>
+      </div>
+      <!-- Class Writing -->
+      <div class="class">
+        <h3>Writing</h3>
+        <div class="form-group">
+          <label for="writingQuiz1">Quiz 1:</label>
+          <input type="number" class="form-control" id="writingQuiz1">
+        </div>
+        <div class="form-group">
+          <label for="writingQuiz2">Quiz 2:</label>
+          <input type="number" class="form-control" id="writingQuiz2">
+        </div>
+        <div class="form-group">
+          <label for="writingMidterm1">Midterm 1:</label>
+          <input type="number" class="form-control" id="writingMidterm1">
+        </div>
+        <div class="form-group">
+          <label for="writingMidterm2">Midterm 2:</label>
+          <input type="number" class="form-control" id="writingMidterm2">
+        </div>
+        <div class="form-group">
+          <label for="writingPerformance">Performance:</label>
+          <input type="number" class="form-control" id="writingPerformance">
+        </div>
+      </div>
+      <!-- Class Reading -->
+      <div class="class">
+        <h3>Reading</h3>
+        <div class="form-group">
+          <label for="readingQuiz1">Quiz 1:</label>
+          <input type="number" class="form-control" id="readingQuiz1">
+        </div>
+        <div class="form-group">
+          <label for="readingQuiz2">Quiz 2:</label>
+          <input type="number" class="form-control" id="readingQuiz2">
+        </div>
+        <div class="form-group">
+          <label for="readingMidterm1">Midterm 1:</label>
+          <input type="number" class="form-control" id="readingMidterm1">
+        </div>
+        <div class="form-group">
+          <label for="readingMidterm2">Midterm 2:</label>
+          <input type="number" class="form-control" id="readingMidterm2">
+        </div>
+        <div class="form-group">
+          <label for="readingPerformance">Performance:</label>
+          <input type="number" class="form-control" id="readingPerformance">
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="calculateGrades()">Submit</button>
+      <div id="result" class="mt-4" style="display: none;">
+        <h2>Overall Grades</h2>
+        <div id="gradeResults"></div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function calculateGrades() {
+        const classes = {
+          UseOfEnglish: {
+            Quizzes: [
+              parseInt(document.getElementById('englishQuiz1').value),
+              parseInt(document.getElementById('englishQuiz2').value)
+            ],
+            Midterms: [
+              parseInt(document.getElementById('englishMidterm1').value),
+              parseInt(document.getElementById('englishMidterm2').value)
+            ],
+            Performance: parseInt(document.getElementById('englishPerformance').value)
+          },
+          ListeningAndSpeaking: {
+            Quizzes: [
+              parseInt(document.getElementById('listeningQuiz1').value),
+              parseInt(document.getElementById('listeningQuiz2').value)
+            ],
+            Midterms: [
+              parseInt(document.getElementById('listeningMidterm1').value),
+              parseInt(document.getElementById('listeningMidterm2').value)
+            ],
+            Performance: parseInt(document.getElementById('listeningPerformance').value)
+          },
+          Writing: {
+            Quizzes: [
+              parseInt(document.getElementById('writingQuiz1').value),
+              parseInt(document.getElementById('writingQuiz2').value)
+            ],
+            Midterms: [
+              parseInt(document.getElementById('writingMidterm1').value),
+              parseInt(document.getElementById('writingMidterm2').value)
+            ],
+            Performance: parseInt(document.getElementById('writingPerformance').value)
+          },
+          Reading: {
+            Quizzes: [
+              parseInt(document.getElementById('readingQuiz1').value),
+              parseInt(document.getElementById('readingQuiz2').value)
+            ],
+            Midterms: [
+              parseInt(document.getElementById('readingMidterm1').value),
+              parseInt(document.getElementById('readingMidterm2').value)
+            ],
+            Performance: parseInt(document.getElementById('readingPerformance').value)
+          }
+        };
+        const classPercModifier = 100; // Modify this value if needed
+        function perc(number, percentage) {
+          return (number * percentage) / 100;
+        }
+
+        function calculateClass(classTable, classPercModifier) {
+          let sum = 0;
+          for (const quiz of classTable.Quizzes) {
+            if (!isNaN(quiz)) {
+              sum += perc(quiz, 15);
+            }
+          }
+          for (const midterm of classTable.Midterms) {
+            if (!isNaN(midterm)) {
+              sum += perc(midterm, 25);
+            }
+          }
+          sum += perc(classTable.Performance, 20);
+          return perc(sum, classPercModifier);
+        }
+        let resultHtml = '';
+        let totalOverallGrade = 0;
+        for (const className in classes) {
+          const classGrade = calculateClass(classes[className], classPercModifier);
+          resultHtml += `
+                                                
+                                                <p>${className}: ${classGrade.toFixed(3)}</p>`;
+          totalOverallGrade += classGrade;
+        }
+        const finalNote = perc(totalOverallGrade, 25).toFixed(3);
+        resultHtml += `
+                                                
+                                                <p>
+                                                  <strong>Final Note: ${finalNote}</strong>
+                                                </p>`;
+        document.getElementById('gradeResults').innerHTML = resultHtml;
+        document.getElementById('result').style.display = 'block';
+      }
+    </script>
+  </body>
+</html>
